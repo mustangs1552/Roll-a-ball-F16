@@ -15,10 +15,7 @@ public class Rotator : MonoBehaviour
     #endregion
 
     #region Private
-
-    #region ExternalScripts
-
-    #endregion
+    
     #endregion
     #endregion
 
@@ -64,10 +61,6 @@ public class Rotator : MonoBehaviour
     void Start()
     {
         if (isDebug) Debug.Log(debugScriptName + ": Loaded.");
-
-        #region ExternalScriptAssignments
-
-        #endregion
     }
     // Called every fixed frame
     void FixedUpdate()

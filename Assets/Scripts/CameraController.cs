@@ -16,10 +16,6 @@ public class CameraController : MonoBehaviour
 
     #region Private
     private Vector3 offset = Vector3.zero;
-
-    #region ExternalScripts
-
-    #endregion
     #endregion
     #endregion
 
@@ -65,10 +61,6 @@ public class CameraController : MonoBehaviour
     void Start()
     {
         if (isDebug) Debug.Log(debugScriptName + ": Loaded.");
-
-        #region ExternalScriptAssignments
-
-        #endregion
         
         offset = transform.position - player.transform.position;
     }

@@ -20,10 +20,6 @@ public class PlayerController : MonoBehaviour
     #region Private
     private Rigidbody rb = null;
     private int count = 0;
-
-    #region ExternalScripts
-
-    #endregion
     #endregion
     #endregion
 
@@ -81,10 +77,6 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         if (isDebug) Debug.Log(debugScriptName + ": Loaded.");
-
-        #region ExternalScriptAssignments
-
-        #endregion
 
         rb = GetComponent<Rigidbody>();
 
