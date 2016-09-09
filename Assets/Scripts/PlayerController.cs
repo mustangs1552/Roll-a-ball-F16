@@ -1,6 +1,7 @@
 ﻿// (Unity3D) New monobehaviour script that includes regions for common sections, and supports debugging.
 using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -12,10 +13,13 @@ public class PlayerController : MonoBehaviour
 
     #region Public
     public float spd = 1;
+    public Text countText = null;
+    public Text winText = null;
     #endregion
 
     #region Private
     private Rigidbody rb = null;
+    private int count = 0;
 
     #region ExternalScripts
 
@@ -29,7 +33,10 @@ public class PlayerController : MonoBehaviour
     #endregion
 
     #region Private
-
+    private void SetCountText()
+    {
+        countText.text = "Count: " + count.ToString();
+    }
     #endregion
 
     #region Debug
@@ -62,6 +69,9 @@ public class PlayerController : MonoBehaviour
         if(otherObj.gameObject.CompareTag("PickUp"))
         {
             otherObj.gameObject.SetActive(false);
+            count++;
+            SetCountText();
+            if (count >= 14) winText.text = "You Win!";
         }
     }
     #endregion
@@ -71,12 +81,15 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         if (isDebug) Debug.Log(debugScriptName + ": Loaded.");
-        
-        rb = GetComponent<Rigidbody>();
 
         #region ExternalScriptAssignments
 
         #endregion
+
+        rb = GetComponent<Rigidbody>();
+
+        SetCountText();
+        winText.text = "";
     }
     // Called every fixed frame, called before physics calculations
     void FixedUpdate()
@@ -89,7 +102,7 @@ public class PlayerController : MonoBehaviour
     // Called before each frame
     void Update()
     {
-
+        if (Input.GetAxis("Cancel") > 0) Application.Quit();
     }
     #endregion
 }
